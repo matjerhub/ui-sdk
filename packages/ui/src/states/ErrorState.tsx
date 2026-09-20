@@ -5,12 +5,14 @@ import { Button } from '../components/Button.js';
 export interface ErrorStateProps {
   title?: string;
   message?: string;
+  actionLabel?: string;
   onRetry?: () => void;
 }
 
 export const ErrorState: React.FC<ErrorStateProps> = ({
   title = 'Something went wrong',
   message = 'An unexpected error occurred while loading this page. Please try again or contact support.',
+  actionLabel = 'Retry Request',
   onRetry,
 }) => {
   return (
@@ -33,7 +35,7 @@ export const ErrorState: React.FC<ErrorStateProps> = ({
       </p>
       {onRetry && (
         <Button variant="outline" onClick={onRetry} style={{ marginTop: '8px' }}>
-          Retry Request
+          {actionLabel}
         </Button>
       )}
     </Card>

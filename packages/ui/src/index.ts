@@ -20,6 +20,8 @@ export * from './components/Alert.js';
 export * from './components/Table.js';
 export * from './components/Pagination.js';
 export * from './components/Skeleton.js';
+export * from './components/MarketplaceListingCard.js';
+export * from './components/MarketplaceCollectionGrid.js';
 export * from './states/EmptyState.js';
 
 // Layout Primitives
@@ -41,6 +43,7 @@ export * from './navigation/navigation.js';
 // Shell States & Auth UX
 export * from './states/LoadingState.js';
 export * from './states/ErrorState.js';
+export * from './marketplace/types.js';
 export * from './states/UnauthorizedState.js';
 export * from './auth/AnonymousState.js';
 export * from './auth/AuthenticatedState.js';

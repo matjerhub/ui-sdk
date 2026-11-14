@@ -19,11 +19,23 @@ export const supplierNavigation: NavItem[] = [
 ];
 
 export const adminNavigation: NavItem[] = [
-  { id: 'dashboard', label: 'Dashboard', icon: '📊', path: '/dashboard' },
-  { id: 'tenants', label: 'Tenants', icon: '🏢', path: '/tenants' },
-  { id: 'users', label: 'Users', icon: '👥', path: '/users' },
-  { id: 'roles', label: 'Roles', icon: '🛡️', path: '/roles' },
-  { id: 'configuration', label: 'Configuration', icon: '⚙️', path: '/configuration' },
+  { id: 'dashboard', label: 'غرفة العمليات', icon: '📊', path: '/dashboard' },
+  { id: 'merchants', label: 'إدارة المتاجر والتجار', icon: '🏢', path: '/merchants' },
+  { id: 'suppliers', label: 'إدارة الموردين والجملة', icon: '🔗', path: '/suppliers' },
+  { id: 'tenants', label: 'مساحات العمل', icon: '🏬', path: '/tenants' },
+  { id: 'merchant-details', label: 'تفاصيل المتجر', icon: '🔎', path: '/merchant-details' },
+  { id: 'users', label: 'المستخدمون والحسابات', icon: '👥', path: '/users' },
+  { id: 'roles', label: 'الهوية والصلاحيات SSO', icon: '🛡️', path: '/roles' },
+  { id: 'plans', label: 'خطط الاشتراك والقيود', icon: '📋', path: '/plans' },
+  { id: 'payments', label: 'بوابات الدفع MatjerHub Pay', icon: '💳', path: '/payments' },
+  { id: 'withdrawals', label: 'طلبات السحب والتسويات', icon: '💸', path: '/withdrawals' },
+  { id: 'transactions', label: 'المعاملات والمحافظ', icon: '🧾', path: '/transactions' },
+  { id: 'markets', label: 'الأسواق والعملات', icon: '🌍', path: '/markets' },
+  { id: 'logistics', label: 'اللوجستيات وشركات الشحن', icon: '🚚', path: '/logistics' },
+  { id: 'integrations', label: 'التكاملات و Webhooks', icon: '🔗', path: '/integrations' },
+  { id: 'reports', label: 'التقارير والتصدير', icon: '📈', path: '/reports' },
+  { id: 'audit', label: 'سجل التدقيق الأمني', icon: '🧭', path: '/audit' },
+  { id: 'configuration', label: 'إعدادات النظام', icon: '⚙️', path: '/configuration' },
 ];
 
 export const navigationRegistry = {

@@ -17,6 +17,11 @@ export interface DashboardLayoutProps {
   onSignOut?: () => void;
   onProfileClick?: () => void;
   onSettingsClick?: () => void;
+  initialDir?: 'ltr' | 'rtl';
+  initialTheme?: 'dark' | 'light';
+  searchValue?: string;
+  searchPlaceholder?: string;
+  onSearchChange?: (value: string) => void;
   children: React.ReactNode;
 }
 
@@ -35,11 +40,16 @@ export const DashboardLayout: React.FC<DashboardLayoutProps> = ({
   onSignOut,
   onProfileClick,
   onSettingsClick,
+  initialDir = 'ltr',
+  initialTheme = 'dark',
+  searchValue,
+  searchPlaceholder,
+  onSearchChange,
   children,
 }) => {
   const [collapsed, setCollapsed] = React.useState(false);
-  const [dir, setDir] = React.useState<'ltr' | 'rtl'>('ltr');
-  const [theme, setTheme] = React.useState<'dark' | 'light'>('dark');
+  const [dir, setDir] = React.useState<'ltr' | 'rtl'>(initialDir);
+  const [theme, setTheme] = React.useState<'dark' | 'light'>(initialTheme);
 
   const toggleDir = () => {
     const nextDir = dir === 'ltr' ? 'rtl' : 'ltr';
@@ -90,6 +100,9 @@ export const DashboardLayout: React.FC<DashboardLayoutProps> = ({
           onToggleDir={toggleDir}
           theme={theme}
           onToggleTheme={toggleTheme}
+          searchValue={searchValue}
+          searchPlaceholder={searchPlaceholder}
+          onSearchChange={onSearchChange}
         />
 
         <main style={{ flex: 1, padding: '24px', overflowY: 'auto' }}>{children}</main>

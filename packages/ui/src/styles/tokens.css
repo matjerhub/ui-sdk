@@ -1,11 +1,11 @@
 /* MatjerHub Design Tokens & Theme Foundation - Stitch Design System */
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap');
 
 :root {
   /* Font Families - Stitch Design System */
-  --font-heading: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-body: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-heading: 'IBM Plex Sans Arabic', 'IBM Plex Sans', system-ui, sans-serif;
+  --font-body: 'IBM Plex Sans Arabic', 'IBM Plex Sans', system-ui, sans-serif;
   --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 
   /* Spacing Scale (8pt grid system) - Stitch Design System */
@@ -50,18 +50,23 @@
   /* Tertiary: #10B981 (Electric Mint) */
   /* Neutral: #0F172A (Slate 900) */
 
-  --color-background: #faf8ff;        /* surface */
-  --color-foreground: #131b2e;        /* on-surface */
-  --color-muted: #f2f3ff;             /* surface-container-low */
-  --color-muted-foreground: #6f7974;  /* outline */
+  --color-background: #f8f9ff;        /* surface */
+  --color-foreground: #0b1c30;        /* on-surface */
+  --color-muted: #eff4ff;             /* surface-container-low */
+  --color-muted-foreground: #3f4943;  /* on-surface-variant */
 
   --color-card: #ffffff;              /* surface-container-lowest */
-  --color-card-foreground: #131b2e;   /* on-surface */
-  --color-card-border: #e2e8f0;       /* outline-variant */
+  --color-card-foreground: #0b1c30;   /* on-surface */
+  --color-card-border: #bec9c1;       /* outline-variant */
+  --color-inverse-surface: #213145;   /* inverse-surface */
+  --color-inverse-on-surface: #eaf1ff; /* inverse-on-surface */
+  --color-primary-container: #0d684b; /* primary-container */
+  --color-on-primary-container: #94e4bf; /* on-primary-container */
+  --color-primary-fixed-dim: #87d6b2; /* primary-fixed-dim */
 
-  --color-primary: #0d5c46;           /* primary-container */
-  --color-primary-hover: #0a4736;     /* darker primary */
-  --color-primary-active: #083b2c;    /* even darker */
+  --color-primary: #004e37;           /* primary */
+  --color-primary-hover: #0d684b;     /* primary-container */
+  --color-primary-active: #003526;    /* pressed primary */
   --color-on-primary: #ffffff;        /* on-primary */
 
   --color-secondary: #0284c7;         /* secondary */
@@ -72,7 +77,7 @@
   --color-tertiary-hover: #059669;    /* darker tertiary */
   --color-on-tertiary: #ffffff;       /* on-tertiary */
 
-  --color-border: #dae2fd;            /* surface-variant */
+  --color-border: #bec9c1;            /* outline-variant */
   --color-input: #ffffff;             /* surface-container-lowest */
   --color-ring: #0d5c46;              /* primary */
 

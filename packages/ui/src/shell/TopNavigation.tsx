@@ -19,6 +19,9 @@ export interface TopNavigationProps {
   onToggleDir?: () => void;
   theme?: 'dark' | 'light';
   onToggleTheme?: () => void;
+  searchValue?: string;
+  searchPlaceholder?: string;
+  onSearchChange?: (value: string) => void;
 }
 
 export const TopNavigation: React.FC<TopNavigationProps> = ({
@@ -35,6 +38,9 @@ export const TopNavigation: React.FC<TopNavigationProps> = ({
   onToggleDir,
   theme = 'dark',
   onToggleTheme,
+  searchValue = '',
+  searchPlaceholder = 'Search',
+  onSearchChange,
 }) => {
   return (
     <header
@@ -53,6 +59,18 @@ export const TopNavigation: React.FC<TopNavigationProps> = ({
     >
       <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
         <Breadcrumbs items={breadcrumbsItems} />
+        {onSearchChange && (
+          <label style={{ position: 'relative', display: 'flex', alignItems: 'center', width: 'min(320px, 30vw)' }}>
+            <span aria-hidden="true" style={{ position: 'absolute', insetInlineEnd: '10px', color: 'var(--color-muted-foreground)' }}>⌕</span>
+            <input
+              aria-label={searchPlaceholder}
+              placeholder={searchPlaceholder}
+              value={searchValue}
+              onChange={(event) => onSearchChange(event.target.value)}
+              style={{ width: '100%', height: '36px', padding: '0 34px 0 12px', border: 0, borderRadius: '8px', background: 'var(--color-muted)', color: 'var(--color-foreground)', font: 'inherit', outline: 'none' }}
+            />
+          </label>
+        )}
       </div>
 
       <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>

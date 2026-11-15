@@ -1,0 +1,15 @@
+.git
+.github
+.env
+Dockerfile*
+.dockerignore
+node_modules
+**/node_modules
+.next
+**/.next
+**/dist
+coverage
+*.log
+*.md
+docs
+docs/

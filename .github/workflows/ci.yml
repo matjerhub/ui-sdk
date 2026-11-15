@@ -6,10 +6,20 @@ on:
   pull_request:
     branches: [main]
 
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+env:
+  DOCKER_BUILDKIT: "1"
+  RUNNER_TOOL_CACHE: /runner-cache/tool-cache
+  NPM_CONFIG_CACHE: /runner-cache/npm
+  PNPM_STORE_DIR: /runner-cache/pnpm
+  YARN_CACHE_FOLDER: /runner-cache/yarn
 
 jobs:
   build-and-test:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -24,7 +34,10 @@ jobs:
   publish:
     needs: build-and-test
     if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
+    concurrency:
+      group: npm-publish-${{ github.workflow }}-${{ github.ref }}
+      cancel-in-progress: false
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4

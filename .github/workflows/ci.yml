@@ -12,15 +12,38 @@ concurrency:
 
 env:
   DOCKER_BUILDKIT: "1"
-  RUNNER_TOOL_CACHE: /runner-cache/tool-cache
-  NPM_CONFIG_CACHE: /runner-cache/npm
-  PNPM_STORE_DIR: /runner-cache/pnpm
-  YARN_CACHE_FOLDER: /runner-cache/yarn
 
 jobs:
   build-and-test:
     runs-on: self-hosted
     steps:
+      - name: Configure runner cache
+        run: |
+          if [ -d /runner-cache ] && [ ! -w /runner-cache ] && command -v sudo >/dev/null 2>&1; then
+            sudo chown -R "$(id -u):$(id -g)" /runner-cache 2>/dev/null || true
+          fi
+          if [ -d /runner-cache ] && [ -w /runner-cache ]; then
+            CACHE_BASE="/runner-cache"
+          else
+            CACHE_BASE="${RUNNER_TEMP}/runner-cache"
+          fi
+          mkdir -p \
+            "$CACHE_BASE/tool-cache" \
+            "$CACHE_BASE/go-build" \
+            "$CACHE_BASE/go-mod" \
+            "$CACHE_BASE/npm" \
+            "$CACHE_BASE/pnpm" \
+            "$CACHE_BASE/yarn" \
+            "$CACHE_BASE/bin"
+          {
+            echo "RUNNER_CACHE_DIR=$CACHE_BASE"
+            echo "RUNNER_TOOL_CACHE=$CACHE_BASE/tool-cache"
+            echo "GOCACHE=$CACHE_BASE/go-build"
+            echo "GOMODCACHE=$CACHE_BASE/go-mod"
+            echo "NPM_CONFIG_CACHE=$CACHE_BASE/npm"
+            echo "PNPM_STORE_DIR=$CACHE_BASE/pnpm"
+            echo "YARN_CACHE_FOLDER=$CACHE_BASE/yarn"
+          } >> "$GITHUB_ENV"
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
@@ -39,6 +62,33 @@ jobs:
       group: npm-publish-${{ github.workflow }}-${{ github.ref }}
       cancel-in-progress: false
     steps:
+      - name: Configure runner cache
+        run: |
+          if [ -d /runner-cache ] && [ ! -w /runner-cache ] && command -v sudo >/dev/null 2>&1; then
+            sudo chown -R "$(id -u):$(id -g)" /runner-cache 2>/dev/null || true
+          fi
+          if [ -d /runner-cache ] && [ -w /runner-cache ]; then
+            CACHE_BASE="/runner-cache"
+          else
+            CACHE_BASE="${RUNNER_TEMP}/runner-cache"
+          fi
+          mkdir -p \
+            "$CACHE_BASE/tool-cache" \
+            "$CACHE_BASE/go-build" \
+            "$CACHE_BASE/go-mod" \
+            "$CACHE_BASE/npm" \
+            "$CACHE_BASE/pnpm" \
+            "$CACHE_BASE/yarn" \
+            "$CACHE_BASE/bin"
+          {
+            echo "RUNNER_CACHE_DIR=$CACHE_BASE"
+            echo "RUNNER_TOOL_CACHE=$CACHE_BASE/tool-cache"
+            echo "GOCACHE=$CACHE_BASE/go-build"
+            echo "GOMODCACHE=$CACHE_BASE/go-mod"
+            echo "NPM_CONFIG_CACHE=$CACHE_BASE/npm"
+            echo "PNPM_STORE_DIR=$CACHE_BASE/pnpm"
+            echo "YARN_CACHE_FOLDER=$CACHE_BASE/yarn"
+          } >> "$GITHUB_ENV"
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
